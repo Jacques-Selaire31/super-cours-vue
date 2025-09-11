@@ -17,6 +17,7 @@
           <a href="#" class="link link-hover">À propos</a>
           <a href="#" class="link link-hover">Services</a>
           <a href="#" class="link link-hover">Contact</a>
+          <a v-bind:href=leLien class="link link-hover">Google</a>
         </div>
 
         <!-- Section "Légal" -->
@@ -33,6 +34,9 @@
 
 <script setup>
 // Pas de logique spécifique pour un composant de footer.
+import { ref } from 'vue'
+
+const leLien = ref('https://www.google.com')
 </script>
 
 <style scoped>
