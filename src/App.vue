@@ -8,6 +8,7 @@
       <h1>ICI c'est TOULOUSE</h1>
       <router-view></router-view>
       <ButtonNumber></ButtonNumber>
+      <TpVif></TpVif>
       <InputsEscape></InputsEscape>
       <div id="cards">
         <DynamicStyleClass></DynamicStyleClass>
@@ -28,6 +29,7 @@ import InputsEscape from './tp/InputsEscape.vue';
 import TpBinding from './tp/TpBinding.vue';
 import DynamicStyleClass from './tp/DynamicStyleClass.vue';
 import DynamicStyleInline from './tp/DynamicStyleInline.vue';
+import TpVif from './tp/TpVif.vue';
 // Pas de logique spécifique nécessaire ici,
 // Nuxt gère automatiquement la mise en page
 // avec les composants de layout.
@@ -41,5 +43,10 @@ import DynamicStyleInline from './tp/DynamicStyleInline.vue';
   flex-direction: row;
   justify-content: center;
   column-gap: 100px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 </style>
