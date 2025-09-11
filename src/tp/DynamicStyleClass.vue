@@ -15,7 +15,6 @@ const DynamicStyle = ()=>{
   const card = document.getElementById("card");
   card.classList.toggle("dynamic");
 }
-
 </script>
 <style scoped lang="css">
 .dynamic{
