@@ -2,15 +2,15 @@
   <div>
     <input v-model="value" />
     <h3 id="title_meteo">Condition météo à Toulouse : </h3>
-    <p>Date : {{arrayMeteo[0]}}</p>
-    <p>Condition actuelle : {{arrayMeteo[1]}}</p>
-    <p>Température actuelle : {{arrayMeteo[4]}}</p>
-    <p>Température minimale du jour : {{arrayMeteo[2]}}</p>
-    <p>Température maximale du jour : {{arrayMeteo[3]}}</p>
+    <p>Date : {{ arrayMeteo[0] }}</p>
+    <p>Condition actuelle : {{ arrayMeteo[1] }}</p>
+    <p>Température actuelle : {{ arrayMeteo[4] }}</p>
+    <p>Température minimale du jour : {{ arrayMeteo[2] }}</p>
+    <p>Température maximale du jour : {{ arrayMeteo[3] }}</p>
   </div>
   <div>
     <h3>Nos supers POKEMON</h3>
-    <p class="badge badge-primary" v-for="poke in arrayPokemon"> {{ poke }}</p>
+    <p class="badge badge-primary" v-for="poke, index  in arrayPokemon" :key="index"> {{ poke }}</p>
   </div>
 </template>
 
@@ -47,7 +47,7 @@ const FetchAPIMeteo = async () => {
   }
 }
 
-const FetchAPIPokemon = async ()=>{
+const FetchAPIPokemon = async () => {
   try {
     const rawData = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20');
     // Vérification du statut de la réponse
@@ -57,7 +57,7 @@ const FetchAPIPokemon = async ()=>{
     }
     const transformedData = await rawData.json();
     console.log(transformedData);
-    for (let i=0; i < transformedData.results.length; i++){
+    for (let i = 0; i < transformedData.results.length; i++) {
       arrayPokemon.value.push(transformedData.results[i].name);
     }
     console.log(arrayPokemon);

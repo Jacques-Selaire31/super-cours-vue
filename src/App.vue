@@ -6,6 +6,7 @@
     <main class="flex-1 w-full max-w-7xl mx-auto p-4 md:p-8">
       <!-- Ici on aura la router view -->
       <h1>ICI c'est TOULOUSE</h1>
+       <!-- <HelloWorld Emilie="on passe une props pour FOO" username="On passe une props pour username" /> -->
       <router-view></router-view>
       <ButtonNumber></ButtonNumber>
       <TpVif></TpVif>
@@ -16,6 +17,7 @@
       </div>
       <TpBinding></TpBinding>
       <LifeCircle></LifeCircle>
+      <FriendsList></FriendsList>
     </main>
     <!-- Footer en bas de la page -->
     <AppFooter />
@@ -32,6 +34,8 @@ import DynamicStyleClass from './tp/DynamicStyleClass.vue';
 import DynamicStyleInline from './tp/DynamicStyleInline.vue';
 import TpVif from './tp/TpVif.vue';
 import LifeCircle from './tp/LifeCircle.vue';
+import HelloWorld from './components/HelloWorld.vue';
+import FriendsList from './tp/FriendsList.vue';
 // Pas de logique spécifique nécessaire ici,
 // Nuxt gère automatiquement la mise en page
 // avec les composants de layout.
