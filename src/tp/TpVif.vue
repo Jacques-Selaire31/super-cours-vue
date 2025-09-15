@@ -3,7 +3,8 @@
         <label for="film">Entrez le nom d'un film</label>
         <textarea v-model="movieName" name="movie-area" id="movie-area" placeholder="Nom du film..."></textarea>
         <button @click="addMovie" class="btn btn-primary">Ajouter le film</button>
-        <span @click="deleteMovie" v-if="arrayMovie.length" v-for="index, movie in arrayMovie"> {{index}} {{ movie }} </span>
+        <span @click="deleteMovie" v-if="arrayMovie.length" v-for="movie, index in arrayMovie" :id="index"> {{ index+1 }} {{ movie }}
+        </span>
         <span v-else>Veuillez rentrer un film dans la liste</span>
     </div>
 </template>
@@ -13,9 +14,10 @@ const arrayMovie = ref([]);
 const movieName = ref("");
 const addMovie = () => {
     arrayMovie.value.push(movieName.value);
+    movieName.value = "";
 }
-const deleteMovie = ()=>{
-
+const deleteMovie = (index) => {
+    arrayMovie.value.splice(index,1)
 }
 </script>
 <style scoped lang="css">
@@ -27,7 +29,8 @@ const deleteMovie = ()=>{
     align-items: center;
     justify-content: center;
 }
-.hidden{
+
+.hidden {
     display: none;
 }
 </style>

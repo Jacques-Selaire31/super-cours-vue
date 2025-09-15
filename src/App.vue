@@ -15,6 +15,7 @@
         <DynamicStyleInline></DynamicStyleInline>
       </div>
       <TpBinding></TpBinding>
+      <LifeCircle></LifeCircle>
     </main>
     <!-- Footer en bas de la page -->
     <AppFooter />
@@ -30,6 +31,7 @@ import TpBinding from './tp/TpBinding.vue';
 import DynamicStyleClass from './tp/DynamicStyleClass.vue';
 import DynamicStyleInline from './tp/DynamicStyleInline.vue';
 import TpVif from './tp/TpVif.vue';
+import LifeCircle from './tp/LifeCircle.vue';
 // Pas de logique spécifique nécessaire ici,
 // Nuxt gère automatiquement la mise en page
 // avec les composants de layout.
