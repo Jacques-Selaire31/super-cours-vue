@@ -1,5 +1,11 @@
 <template>
   <div>
+    <NewFriend @add-ami="addAmi"></NewFriend>
+    <OnFriend v-for="ami in lesAmis" :id="ami.id" :unAmiName="ami.name" :unAmiPhone="ami.phone" :unAmiMail="ami.email"
+      :premium="ami.premium" @delete="DeleteFriendInArray"  @change="ChangePremium"></OnFriend> 
+      <span class="alert" v-bind:style="{color:color}">🛑🛑🛑🛑🛑🛑🛑☢️☢️☢️☢️☣️☣️☣️☣️☣️⚠️⚠️⚠️⚠️⚠️⚠️ESPECE DE CON NE MET PAS LES PARENTHESES POUR LES FONCTIONS DANS LE TEMPLATE GROS NOOB!!!!!!!!☢️☢️☢️☢️☣️☣️☣️☣️☣️⚠️⚠️⚠️⚠️⚠️⚠️🛑🛑🛑🛑🛑🛑🛑</span>
+</div>
+      <!-- <div>
     <input v-model="value" />
     <div>
       <label for="id">id:</label>
@@ -18,18 +24,17 @@
     </div>
     <button v-on:click="addFriend(id,name, phone, email)" class="btn btn-secondary">Ajouter ami</button>
     <OnFriend v-for="ami in lesAmis" :id="ami.id" :unAmiName="ami.name" :unAmiPhone="ami.phone" :unAmiMail="ami.email"
-      :premium="ami.premium" v-on:click=DeleteFriendInArray></OnFriend>
-  </div>
+      :premium="ami.premium" v-on:click=DeleteFriendInArray  @change="ChangePremium"></OnFriend> 
+      <span class="alert" v-bind:style="{color:color}">🛑🛑🛑🛑🛑🛑🛑☢️☢️☢️☢️☣️☣️☣️☣️☣️⚠️⚠️⚠️⚠️⚠️⚠️ESPECE DE CON NE MET PAS LES PARENTHESES POUR LES FONCTIONS DANS LE TEMPLATE GROS NOOB!!!!!!!!☢️☢️☢️☢️☣️☣️☣️☣️☣️⚠️⚠️⚠️⚠️⚠️⚠️🛑🛑🛑🛑🛑🛑🛑</span>
+  </div> -->
 </template>
 
 <script setup lang='js'>
 import { computed, watch, onMounted, onUpdated, onBeforeUnmount, ref } from 'vue'
 import OnFriend from './OnFriend.vue';
+import NewFriend from './NewFriend.vue';
 
-const id = ref("");
-const name = ref("");
-const phone = ref("");
-const email = ref("");
+const color = "red";
 const lesAmis = ref([
   {
     id: 'lasticot',
@@ -60,11 +65,26 @@ const lesAmis = ref([
     premium: true
   }
 ]);
+function addAmi(name, email, phone) {
+  const id = crypto.randomUUID();
+  lesAmis.value.push({ id : id, name : name, phone : phone, email : email });
+}
+
+function ChangePremium(identifiant) {
+  let ami = lesAmis.value.find((element) => element.id === identifiant);
+  ami.premium = !ami.premium;
+}
 
 function DeleteFriendInArray(id) {
   lesAmis.value.splice(id, 1)
 }
-function addFriend(id,name, phone, email){
-lesAmis.value.push({id,name, phone, email});
-}
+
+//
 </script>
+<style scoped lang="css">
+.alert{
+    width: 50%;
+    border: 4px ridge #f2452c;
+    align-items: center;
+}
+</style>

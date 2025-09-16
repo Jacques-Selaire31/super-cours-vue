@@ -17,8 +17,8 @@
         </div>
       </div>
     </div>
-    <button @click="ChangePremium()" class="btn btn-success" v-if="premium === false">Ajouter en Premium 😍</button>
-    <button @click="ChangePremium()" class="btn btn-success" v-else="premium === true">Ajouter en NUL! 😒</button>
+    <button @click="EmitPremium()" class="btn btn-success" v-if="premium === false">Ajouter en Premium 😍</button>
+    <button @click="EmitPremium()" class="btn btn-success" v-else="premium === true">Ajouter en NUL! 😒</button>
     <button @click="DeleteFriend()" class="btn btn-warning">Supprimer 🥱</button>
   </div>
 </template>
@@ -50,12 +50,12 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(["click", "change", "delete"]);
 function DeleteFriend() {
-  emit("click", props.id);
+  emit("delete", props.id);
 }
-function ChangePremium(){
-  props.premium == !props.premium;
+function EmitPremium(){
+  emit("change", props.id)
 }
 </script>
 <style scoped lang="css"></style>
