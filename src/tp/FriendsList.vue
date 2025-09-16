@@ -40,10 +40,10 @@ const lesAmis = ref([
   },
   {
     id: 'lasticot2',
-    name: 'COCO L ASTICOT',
+    name: 'COCO L ASTICOT NUL !',
     phone: '0123456789',
     email: 'coco@lasticot.com',
-    premium: true
+    premium: false
   },
   {
     id: 'kimonoSurUnFrigo',

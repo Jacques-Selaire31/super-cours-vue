@@ -17,7 +17,8 @@
         </div>
       </div>
     </div>
-    <button class="btn btn-success">Ajouter en Premium 😍</button>
+    <button @click="ChangePremium()" class="btn btn-success" v-if="premium === false">Ajouter en Premium 😍</button>
+    <button @click="ChangePremium()" class="btn btn-success" v-else="premium === true">Ajouter en NUL! 😒</button>
     <button @click="DeleteFriend()" class="btn btn-warning">Supprimer 🥱</button>
   </div>
 </template>
@@ -28,7 +29,7 @@ import { computed, watch, onMounted, onUpdated, onBeforeUnmount, ref } from 'vue
 const props = defineProps({
   id: {
     type: String,
-    required: false,
+    required: true,
   },
   unAmiName: {
     type: String,
@@ -52,6 +53,9 @@ const props = defineProps({
 const emit = defineEmits(["click"]);
 function DeleteFriend() {
   emit("click", props.id);
+}
+function ChangePremium(){
+  props.premium == !props.premium;
 }
 </script>
 <style scoped lang="css"></style>
