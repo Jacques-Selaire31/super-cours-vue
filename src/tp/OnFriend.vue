@@ -1,24 +1,24 @@
 <template>
-  <div v-for="ami in lesAmis">
+  <div>
     <!-- The button to open modal -->
-    <h3>{{ ami.name }}</h3>
+    <h3>{{ unAmiName }}</h3>
     <p v-if="premium === true">AMI PREMIUM 😍</p>
     <p v-else>AMI NUUUUUUUUUUUUUUUL 😒</p>
-    <label for="my_modal_6" class="btn">Détails</label>
+ <label :for="`modal_${id}`" class="btn">Détails</label>
     <!-- Put this part before </body> tag -->
-    <input type="checkbox" class="modal-toggle" id="my_modal_6" />
+    <input type="checkbox" class="modal-toggle" :id="`modal_${id}`" />
     <div class="modal" role="dialog">
       <div class="modal-box">
-        <h3 class="text-lg font-bold">{{ ami.name }}!</h3>
-        <p class="py-4">{{ ami.phone }}</p>
-        <p class="py-4">{{ ami.email }}</p>
+        <h3 class="text-lg font-bold">{{ unAmiName }}!</h3>
+        <p class="py-4">{{ unAmiPhone }}</p>
+        <p class="py-4">{{ unAmiMail }}</p>
         <div class="modal-action">
-          <label for="my_modal_6" class="btn">Close!</label>
+           <label :for="`modal_${id}`" class="btn">Close!</label>
         </div>
       </div>
     </div>
     <button class="btn btn-success">Ajouter en Premium 😍</button>
-    <button class="btn btn-warning">Supprimer 🥱</button>
+    <button @click="DeleteFriend()" class="btn btn-warning">Supprimer 🥱</button>
   </div>
 </template>
 
@@ -26,77 +26,32 @@
 import { computed, watch, onMounted, onUpdated, onBeforeUnmount, ref } from 'vue'
 
 const props = defineProps({
-  id: Number,
-  name: String,
-  phone: Number,
-  email: String,
-  premium: Boolean
-});
-const lesAmis = ref([
-  {
-    id: 'lasticot',
-    name: 'COCO L ASTICOT',
-    phone: '0123456789',
-    email: 'coco@lasticot.com',
-    premium: true
+  id: {
+    type: String,
+    required: false,
   },
-  {
-    id: 'lasticot2',
-    name: 'COCO L ASTICOT',
-    phone: '0123456789',
-    email: 'coco@lasticot.com',
-    premium: true
+  unAmiName: {
+    type: String,
+    required: true,
   },
-  {
-    id: 'kimonoSurUnFrigo',
-    name: "Steven Seagal",
-    phone: '3387654770',
-    email: 'steven@seagal.com',
-    premium: true
+  unAmiPhone: {
+    type: String,
+    required: true,
   },
-  {
-    id: 'yoyoyo',
-    name: "JAROD",
-    phone: '3876005477',
-    email: 'jAROD@seagal.com',
-    premium: true
-  }
-]);
-
-
-const emit = defineEmits({
-  // v-model event with validation
-  'update:modelValue': (value) => value !== null,
-});
-
-const value = computed({
-  get() {
-    return props.modelValue;
+  unAmiMail: {
+    type: String,
+    required: true,
   },
-  set(value) {
-    emit('update:modelValue', value);
+  premium: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
-});
+})
 
-const stopWatch = watch(
-  () => props.modelValue, async (_newValue, _oldValue) => {
-    // do something
-  },
-  {
-    immediate: true
-  }
-);
-
-onMounted(() => {
-});
-
-onUpdated(() => {
-});
-
-onBeforeUnmount(() => {
-  stopWatch();
-});
-
+const emit = defineEmits(["click"]);
+function DeleteFriend() {
+  emit("click", props.id);
+}
 </script>
-
 <style scoped lang="css"></style>
